@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('transfers', function (Blueprint $table) {
+            $table->id();
+         //   $table->bigInteger('user_id')->nullable(false);
+            $table->bigInteger('sender')->nullable(false);
+            $table->bigInteger('receiver')->nullable(false);
+            $table->decimal('amount', 8,4)->nullable(false)->unsignedBigInteger();
+            $table->string('note', 250)->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('transfers');
+    }
+};
