@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TransactionUpdateRequest extends FormRequest
+class TransferCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,19 @@ class TransactionUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|exists:transactions,id',
-            'account_id' => 'required|exists:accounts,id',
-            'category_id' => 'required|exists:categories,id',
+            'sender' => 'required|exists:accounts,id',
+            'receiver' => 'required|exists:accounts,id',
             'amount' => 'required|between: 0, 99999999.99',
-            'type' => 'required|in:income, expense',
             'note' => 'nullable|max:250'
         ];
     }
 }
+
+
+// $table->id();
+// //   $table->bigInteger('user_id')->nullable(false);
+//    $table->bigInteger('sender')->nullable(false);
+//    $table->bigInteger('receiver')->nullable(false);
+//    $table->decimal('amount', 8,4)->nullable(false)->unsignedBigInteger();
+//    $table->string('note', 250)->nullable();
+//    $table->timestamps();
