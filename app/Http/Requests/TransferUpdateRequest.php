@@ -28,7 +28,7 @@ class TransferUpdateRequest extends FormRequest
             'id' => 'required|exists:transfers,id',
             'sender' => 'required|exists:accounts,id',
             'receiver' => 'required|exists:accounts,id',
-            'amount' => 'required|between: 0, 99999999.9999',
+            'amount' => 'required|between: 0, 99999999.9999|integer',
             'note' => 'nullable|max:250'
         ];
     }
