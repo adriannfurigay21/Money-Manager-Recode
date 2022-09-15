@@ -26,7 +26,7 @@ class TransactionCreateRequest extends FormRequest
         return [
             'account_id' => 'required|exists:accounts,id',
             'category_id' => 'required|exists:categories,id',
-            'amount' => 'required|between: 0, 99999999.9999',
+            'amount' => 'required|between: -1, 99999999.9999',
             'type' => 'required|in:income, expense',
             'note' => 'nullable|max:250'
         ];
